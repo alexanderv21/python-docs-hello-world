@@ -1,4 +1,4 @@
-![hello-world-0001](https://github.com/alexanderv21/python-docs-hello-world/workflows/hello-world-0001/badge.svg)
+![hello-world](https://github.com/alexanderv21/python-docs-hello-world/workflows/hello-world/badge.svg)
 
 ---
 page_type: sample
