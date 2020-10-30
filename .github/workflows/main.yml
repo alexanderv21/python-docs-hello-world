@@ -19,29 +19,29 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Terraform Preparation
+    - name: Terraform Init and Plan
       run: |
-        # Exit when any command returns a failure status.
+        # Exit when any command returns a failure status
         set -e
         
         cd ./.github/terraform
 
-        # Write terraform.tfvars.
+        # Write terraform.tfvars
         echo 'resource_group_location = "'${{ env.RGLOCATION }}'"' | tee terraform.tfvars
         echo 'resource_group_name = "'${{ env.RGNAME }}'"' | tee -a terraform.tfvars
         echo 'app_service_plan_name = "'${{ env.ASPNAME }}'"' | tee -a terraform.tfvars
         echo 'app_service_name = "'${{ env.AZWEBAPPNAME }}'"' | tee -a terraform.tfvars
         
-        # Write backend.tfvars.
+        # Write backend.tfvars
         echo 'resource_group_name = "'$TFSTATERG'"' | tee backend.tfvars
         echo 'storage_account_name = "'$TFSTATESTORAGE'"' | tee -a backend.tfvars
         echo 'container_name = "tfstate"' | tee -a backend.tfvars
-        echo 'key = "terraform.tfstate"' | tee -a backend.tfvars
+        echo 'key = "helloworld-terraform.tfstate"' | tee -a backend.tfvars
 
-        # Initialize Terraform.
+        # Initialize Terraform
         terraform init -input=false -backend-config="backend.tfvars"
 
-        # Apply the Terraform plan.
+        # Apply Terraform plan
         terraform apply -input=false -auto-approve
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -91,7 +91,7 @@ jobs:
         platform: python
         platform-version: '3.8'
 
-    - name: 'Deploy to Azure Web App'
+    - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZWEBAPPNAME }}
