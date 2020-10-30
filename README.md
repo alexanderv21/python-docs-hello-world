@@ -1,3 +1,5 @@
+![hello-world-0001](https://github.com/alexanderv21/python-docs-hello-world/workflows/.github/workflows/master_hello-world-0001.yml/badge.svg)
+
 ---
 page_type: sample
 description: "A minimal sample app that can be used to demonstrate deploying Flask apps to Azure App Service on Linux."
