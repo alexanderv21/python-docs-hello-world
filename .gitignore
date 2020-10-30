@@ -91,4 +91,7 @@ ENV/
 
 # Visual Studio Code
 .vscode/
-
+pythonenv*
+.azure/
+.notes
+.pytest_cache/
